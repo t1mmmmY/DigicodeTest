@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class CardsVisualizer : MonoBehaviour 
 {
 	[SerializeField] UIGrid grid;
+    [SerializeField] UIPanel scrollPanel;
 	[SerializeField] Card cardPrefab;
+    [SerializeField] float standardWidth = 330;
 
 //	[Range(10, 200)]
 //	[SerializeField] float cellWith = 100;
@@ -13,6 +15,8 @@ public class CardsVisualizer : MonoBehaviour
 //	[SerializeField] int cardsInHand = 5;
 
 	List<Card> cards;
+
+	Vector2 oldSize;
 
 	void Awake()
 	{
@@ -28,7 +32,16 @@ public class CardsVisualizer : MonoBehaviour
 	{
 		CardsController.onChangeCardsCount -= OnChangeCardsCount;
 	}
-	
+
+	void FixedUpdate()
+	{
+        Vector2 newSize = new Vector2(Screen.width, Screen.height);
+        if (newSize != oldSize)
+        {
+            grid.transform.localScale = Vector3.one * scrollPanel.GetViewSize().y / standardWidth;
+        }
+        oldSize = newSize;
+	}
 	
 	void OnChangeCardsCount(int count)
 	{
