@@ -170,6 +170,13 @@ public class UIScrollView : MonoBehaviour
 	protected Vector2 mDragStartOffset = Vector2.zero;
 	protected bool mDragStarted = false;
 
+    private float scrollTime = 1.0f;
+
+    public void  SetScrollTime(float time)
+    {
+        scrollTime = time;
+    }
+
 	/// <summary>
 	/// Panel that's being dragged.
 	/// </summary>
@@ -888,7 +895,7 @@ public class UIScrollView : MonoBehaviour
 	{
 		if (enabled && NGUITools.GetActive(gameObject) && scrollWheelFactor != 0f)
 		{
-			DisableSpring();
+            DisableSpring();
 			mShouldMove |= shouldMove;
 			if (Mathf.Sign(mScroll) != Mathf.Sign(delta)) mScroll = 0f;
 			mScroll += delta * scrollWheelFactor;
@@ -961,7 +968,7 @@ public class UIScrollView : MonoBehaviour
 				mScroll = NGUIMath.SpringLerp(mScroll, 0f, 20f, delta);
 
 				// Move the scroll view
-				Vector3 offset = NGUIMath.SpringDampen(ref mMomentum, dampenStrength, delta);
+                Vector3 offset = NGUIMath.SpringDampen(ref mMomentum, dampenStrength, delta / scrollTime);
 				MoveAbsolute(offset);
 
 				// Restrict the contents to be within the scroll view's bounds

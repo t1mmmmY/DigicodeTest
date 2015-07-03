@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 066e5f1c37fa7804b92a2138ee8d9d23
-timeCreated: 1434292414
+guid: e67020d2dfdeec94a9579c2a237436ec
+timeCreated: 1435929988
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -26,7 +26,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 256
   textureSettings:
     filterMode: -1
@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: 
+  spritePackingTag: TestSlotItems
   userData: 
   assetBundleName: 
   assetBundleVariant: 
